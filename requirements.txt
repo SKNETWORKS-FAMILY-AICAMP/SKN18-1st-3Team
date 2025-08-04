@@ -1,0 +1,13 @@
+pandas
+numpy
+selenium
+openpyxl
+webdriver_manager
+bs4
+sqlalchemy
+pymysql
+cryptography
+mysqlclient
+plotly
+streamlit_folium
+folium
