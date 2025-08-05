@@ -17,7 +17,13 @@ def load_data():
 
 # Streamlit 앱 시작
 st.set_page_config(page_title="Kia 고객 FAQ", layout="wide")
-st.title("📘 Kia 고객 FAQ")
+st.title("📘 KIA 고객 FAQ")
+
+home_button = st.page_link(
+    page="./app.py",
+    label = "Home",
+    icon="🏠"
+    )
 
 # 데이터 불러오기
 df = load_data()

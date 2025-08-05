@@ -11,3 +11,6 @@ mysqlclient
 plotly
 streamlit_folium
 folium
+scipy
+statsmodels
+socket
