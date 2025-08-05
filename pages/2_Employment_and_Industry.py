@@ -367,6 +367,12 @@ st.set_page_config(
     layout="centered"
 )
 
+home_button = st.page_link(
+    page="./Main_Page.py",
+    label="Home",
+    icon="🏠"
+)
+
 # ✅ 헤더 스타일
 st.markdown("""
     <div style='background-color:#1f77b4; padding: 1rem 2rem; border-radius: 10px;'>

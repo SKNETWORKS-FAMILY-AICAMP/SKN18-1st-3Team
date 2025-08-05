@@ -20,10 +20,10 @@ st.set_page_config(page_title="Kia 고객 FAQ", layout="wide")
 st.title("📘 KIA 고객 FAQ")
 
 home_button = st.page_link(
-    page="./app.py",
-    label = "Home",
+    page="./Main_Page.py",
+    label="Home",
     icon="🏠"
-    )
+)
 
 # 데이터 불러오기
 df = load_data()

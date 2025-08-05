@@ -1,6 +1,6 @@
 # 🚀 프로젝트명 (예: SKN18‑1st‑3Team)
 
-> 팀명, 프로젝트명, 개발 기간, 슬로건 또는 한 줄 소개
+본 프로젝트는 **전기차 등록대수** 증가와 **인프라 확장**, 그리고 **지역별 고용·산업 구조 변화** 간의 관계를 분석하고 시각화하여, 전기차 확산이 사회 및 산업에 미치는 영향을 탐색합니다.
 
 ---
 
@@ -22,10 +22,12 @@
 
 ## 👥 팀원 소개
 
-| ![편성민](https://user-images.githubusercontent.com/your-path/red.png) | ![김재혁](https://user-images.githubusercontent.com/your-path/blue.png) | ![경규휘](https://user-images.githubusercontent.com/your-path/cyan.png) | ![배민경](https://user-images.githubusercontent.com/your-path/yellow.png) | ![이유호](https://user-images.githubusercontent.com/your-path/black.png) | ![조영훈](https://user-images.githubusercontent.com/your-path/purple.png) |
+| **박세영** | **김담하** | **김민주** | **이상효** | **임승옥** | **채린** |
 |:--:|:--:|:--:|:--:|:--:|:--:|
-| **편성민** | **김재혁** | **경규휘** | **배민경** | **이유호** | **조영훈** |
-| [@PyeonMin](https://github.com/PyeonMin) | [@KimJaeHyeok01](https://github.com/KimJaeHyeok01) | [@kqe123](https://github.com/kqe123) | [@baeminkyeong](https://github.com/baeminkyeong) | [@netsma](https://github.com/netsma) | [@yhcho0319](https://github.com/yhcho0319) |
+| ![](assets/park.png) | ![](assets/kim_dh.png) | ![](assets/kim_mj.png) | ![](assets/lee_sh.png) | ![](assets/lim_so.png) | ![](assets/chae.png) |
+| [@github1](https://github.com/github1) | [@github2](https://github.com/github2) | [@github3](https://github.com/github3) | [@github4](https://github.com/github4) | [@github5](https://github.com/github5) | [@github6](https://github.com/github6) |
+
+
 
 
 ---
@@ -48,9 +50,9 @@
 | 개발 언어 | Python                                                        |
 | 크롤링    | Selenium, BeautifulSoup                                       |
 | 데이터 처리 | pandas, SQLAlchemy                                           |
-| 데이터베이스 | MySQL 또는 MariaDB                                           |
-| 웹 UI     | Streamlit (다중 페이지 지원)                                  |
-| 환경 관리   | .env, virtualenv, requirements.txt                           |
+| 데이터베이스 | MySQL                                           |
+| 웹 UI     | Streamlit                                 |
+| 환경 관리   | .env, requirements.txt                           |
 
 ---
 
@@ -89,7 +91,8 @@
 
 ## 6. 데이터 흐름 및 저장 방식
 
-- 수집 데이터 저장 형태: CSV (`kia_faq_data.csv`)  
+- selenium 및 beautifulsoup으로 웹페이지를 크롤링 작업
+- 수집 데이터 저장 형태: CSV/XLSX (`kia_faq_data.csv` 등)  
 - 이 데이터를 `insert_db.py`로 MySQL 테이블 `kia_faq`에 저장  
 - 실시간 조회는 Streamlit이 DB로부터 직접 읽는 방식 또는 pandas CSV 로딩 방식  
 - DB 접속 정보는 `.env` 파일에 저장 (host, port, user, password, db_name 등)
@@ -99,12 +102,35 @@
 ## 7. UI 구성 (Streamlit 다중 페이지)
 
 ```text
-app.py
-└─ pages/
-   ├─ faq_page.py    ← FAQ 조회
-   ├─ page01.py      ← 통계/시각화 페이지
-   ├─ page02.py      ← AI 요약 / 챗봇 페이지
-   └─ (page03.py 예정)
+CHAP1/
+├── assets/                  # 이미지, 로고 등 정적 리소스
+│   ├── electric_car.png
+│   └── skn_logo.png
+
+├── common/                  # 공통 유틸 및 DB 초기화 코드
+│   ├── .env                 # DB 환경 변수 파일
+│   ├── create_db.sql        # DB 스키마 생성 쿼리
+│   ├── insert_db.py         # CSV → MySQL 데이터 삽입 스크립트
+│   └── utils.py             # DB 접속 및 기타 유틸 함수
+
+├── data/
+│   └── KIA_FAQ/            
+│       ├── faq.py           # Selenium 기반 FAQ 크롤러
+│       └── kia_faq_data.csv # 수집된 CSV 데이터
+
+├── pages/                                  # Streamlit 다중 페이지 구성
+│   ├── faq_page.py                          # 메인 FAQ 검색 UI
+│   ├── 01. Region_Popul_Graph.py           # 지역별 인구-자동차 등록 상관계수
+│   ├── 02. Employment_and_Industry.py      # 고용자수-산업 상관계수 페이지
+│   ├── 03. Number_of_Registering_Car.py     # 차량 등록 수와 고용/소득/산업 간 상관관계 분석  
+│   └── 04. Electric_Car_and_Infra.py    # 전기차 등록 및 인프라 분포 페이지
+
+├── src/
+│   └── crawling.py          # 기타 크롤러
+
+├── app.py                   # Streamlit 첫 페이지
+└── requirements.txt         # 설치 필요 패키지 목록
+
 ```
 
 - `app.py`는 Streamlit `page_config` 기반으로 자동 페이지 라우팅  

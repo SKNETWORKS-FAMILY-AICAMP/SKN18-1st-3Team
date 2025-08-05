@@ -237,6 +237,12 @@ st.set_page_config(
     initial_sidebar_state="auto"
 )
 
+home_button = st.page_link(
+    page="./Main_Page.py",
+    label="Home",
+    icon="🏠"
+)
+
 st.markdown("""
     <h2 style='text-align: center;'>⚡ 전기차 상용화 예측 동향 ⚡</h2>
     <p style='text-align: center;'>수도권/지방별 전기차 등록 및 충전기 현황, 화재 발생률까지 시각화 분석</p>

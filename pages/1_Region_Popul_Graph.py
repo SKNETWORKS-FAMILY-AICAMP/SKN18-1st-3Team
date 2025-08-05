@@ -167,7 +167,7 @@ st.set_page_config(
 )
 
 home_button = st.page_link(
-    page="./app.py",
+    page="./Main_Page.py",
     label="Home",
     icon="🏠"
 )
@@ -176,7 +176,7 @@ home_button = st.page_link(
 # 🎯 제목 상자
 st.markdown("""
 <div style="background-color: #1f77b4; padding: 15px; border-radius: 10px;">
-    <h2 style="color: white; text-align: center;">📊 지역별 인구-자동차 등록 상관계수</h2>
+    <h2 style="color: white; text-align: center;">📊 지역별 성별-자동차 등록 상관계수</h2>
 </div>
 """, unsafe_allow_html=True)
 
